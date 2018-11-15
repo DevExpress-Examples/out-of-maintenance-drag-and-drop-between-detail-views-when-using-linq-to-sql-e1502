@@ -1,3 +1,8 @@
+<!-- default file list -->
+*Files to look at*:
+
+* [mainForm.cs](./CS/mainForm.cs) (VB: [mainForm.vb](./VB/mainForm.vb))
+<!-- default file list end -->
 # Drag and drop between detail views when using LINQ to SQL
 
 
