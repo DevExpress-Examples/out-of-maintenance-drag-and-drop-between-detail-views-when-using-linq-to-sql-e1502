@@ -49,11 +49,12 @@ namespace sampleLinqApp
             this.colCategoryName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDescription = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPicture = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.dragTimer = new System.Windows.Forms.Timer(this.components);
+            this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // gridView2
@@ -73,9 +74,6 @@ namespace sampleLinqApp
             this.gridView2.GridControl = this.categoryGridControl;
             this.gridView2.Name = "gridView2";
             this.gridView2.OptionsBehavior.Editable = false;
-            this.gridView2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.OnChildViewMouseMove);
-            this.gridView2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnChildViewMouseUp);
-            this.gridView2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnChildViewMouseDown);
             // 
             // colProductID
             // 
@@ -156,7 +154,6 @@ namespace sampleLinqApp
             // 
             // categoryGridControl
             // 
-            this.categoryGridControl.AllowDrop = true;
             this.categoryGridControl.DataSource = this.categoryBindingSource;
             this.categoryGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             gridLevelNode1.LevelTemplate = this.gridView2;
@@ -171,8 +168,8 @@ namespace sampleLinqApp
             this.categoryGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1,
             this.gridView2});
-            this.categoryGridControl.DragOver += new System.Windows.Forms.DragEventHandler(this.OnGridControlDragOver);
-            this.categoryGridControl.DragDrop += new System.Windows.Forms.DragEventHandler(this.OnGridControlDragDrop);
+            this.categoryGridControl.ViewRegistered += new DevExpress.XtraGrid.ViewOperationEventHandler(this.categoryGridControl_ViewRegistered);
+            this.categoryGridControl.ViewRemoved += new DevExpress.XtraGrid.ViewOperationEventHandler(this.categoryGridControl_ViewRemoved);
             // 
             // categoryBindingSource
             // 
@@ -216,11 +213,6 @@ namespace sampleLinqApp
             this.colPicture.Visible = true;
             this.colPicture.VisibleIndex = 3;
             // 
-            // dragTimer
-            // 
-            this.dragTimer.Interval = 500;
-            this.dragTimer.Tick += new System.EventHandler(this.OnDragTimerTick);
-            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -233,6 +225,7 @@ namespace sampleLinqApp
             ((System.ComponentModel.ISupportInitialize)(this.categoryGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -258,6 +251,6 @@ namespace sampleLinqApp
         private DevExpress.XtraGrid.Columns.GridColumn colReorderLevel;
         private DevExpress.XtraGrid.Columns.GridColumn colDiscontinued;
         private DevExpress.XtraGrid.Columns.GridColumn colCategory;
-        private System.Windows.Forms.Timer dragTimer;
+        private DevExpress.Utils.Behaviors.BehaviorManager behaviorManager1;
     }
 }
