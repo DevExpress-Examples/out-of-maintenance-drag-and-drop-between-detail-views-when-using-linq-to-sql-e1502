@@ -1,6 +1,4 @@
-Imports Microsoft.VisualBasic
-Imports System
-Namespace sampleLinqApp
+﻿Namespace sampleLinqApp
 	Partial Public Class mainForm
 		''' <summary>
 		''' Required designer variable.
@@ -46,11 +44,12 @@ Namespace sampleLinqApp
 			Me.colCategoryName = New DevExpress.XtraGrid.Columns.GridColumn()
 			Me.colDescription = New DevExpress.XtraGrid.Columns.GridColumn()
 			Me.colPicture = New DevExpress.XtraGrid.Columns.GridColumn()
-			Me.dragTimer = New System.Windows.Forms.Timer(Me.components)
+			Me.behaviorManager1 = New DevExpress.Utils.Behaviors.BehaviorManager(Me.components)
 			CType(Me.gridView2, System.ComponentModel.ISupportInitialize).BeginInit()
 			CType(Me.categoryGridControl, System.ComponentModel.ISupportInitialize).BeginInit()
 			CType(Me.categoryBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
 			CType(Me.gridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+			CType(Me.behaviorManager1, System.ComponentModel.ISupportInitialize).BeginInit()
 			Me.SuspendLayout()
 			' 
 			' gridView2
@@ -59,9 +58,6 @@ Namespace sampleLinqApp
 			Me.gridView2.GridControl = Me.categoryGridControl
 			Me.gridView2.Name = "gridView2"
 			Me.gridView2.OptionsBehavior.Editable = False
-'			Me.gridView2.MouseMove += New System.Windows.Forms.MouseEventHandler(Me.OnChildViewMouseMove);
-'			Me.gridView2.MouseUp += New System.Windows.Forms.MouseEventHandler(Me.OnChildViewMouseUp);
-'			Me.gridView2.MouseDown += New System.Windows.Forms.MouseEventHandler(Me.OnChildViewMouseDown);
 			' 
 			' colProductID
 			' 
@@ -142,7 +138,6 @@ Namespace sampleLinqApp
 			' 
 			' categoryGridControl
 			' 
-			Me.categoryGridControl.AllowDrop = True
 			Me.categoryGridControl.DataSource = Me.categoryBindingSource
 			Me.categoryGridControl.Dock = System.Windows.Forms.DockStyle.Fill
 			gridLevelNode1.LevelTemplate = Me.gridView2
@@ -154,8 +149,10 @@ Namespace sampleLinqApp
 			Me.categoryGridControl.Size = New System.Drawing.Size(784, 562)
 			Me.categoryGridControl.TabIndex = 1
 			Me.categoryGridControl.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() { Me.gridView1, Me.gridView2})
-'			Me.categoryGridControl.DragOver += New System.Windows.Forms.DragEventHandler(Me.OnGridControlDragOver);
-'			Me.categoryGridControl.DragDrop += New System.Windows.Forms.DragEventHandler(Me.OnGridControlDragDrop);
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.categoryGridControl.ViewRegistered += new DevExpress.XtraGrid.ViewOperationEventHandler(this.categoryGridControl_ViewRegistered);
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.categoryGridControl.ViewRemoved += new DevExpress.XtraGrid.ViewOperationEventHandler(this.categoryGridControl_ViewRemoved);
 			' 
 			' categoryBindingSource
 			' 
@@ -195,11 +192,6 @@ Namespace sampleLinqApp
 			Me.colPicture.Visible = True
 			Me.colPicture.VisibleIndex = 3
 			' 
-			' dragTimer
-			' 
-			Me.dragTimer.Interval = 500
-'			Me.dragTimer.Tick += New System.EventHandler(Me.OnDragTimerTick);
-			' 
 			' mainForm
 			' 
 			Me.AutoScaleDimensions = New System.Drawing.SizeF(6F, 13F)
@@ -212,6 +204,7 @@ Namespace sampleLinqApp
 			CType(Me.categoryGridControl, System.ComponentModel.ISupportInitialize).EndInit()
 			CType(Me.categoryBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
 			CType(Me.gridView1, System.ComponentModel.ISupportInitialize).EndInit()
+			CType(Me.behaviorManager1, System.ComponentModel.ISupportInitialize).EndInit()
 			Me.ResumeLayout(False)
 
 		End Sub
@@ -225,7 +218,7 @@ Namespace sampleLinqApp
 		Private colCategoryName As DevExpress.XtraGrid.Columns.GridColumn
 		Private colDescription As DevExpress.XtraGrid.Columns.GridColumn
 		Private colPicture As DevExpress.XtraGrid.Columns.GridColumn
-		Private WithEvents gridView2 As DevExpress.XtraGrid.Views.Grid.GridView
+		Private gridView2 As DevExpress.XtraGrid.Views.Grid.GridView
 		Private colProductID As DevExpress.XtraGrid.Columns.GridColumn
 		Private colProductName As DevExpress.XtraGrid.Columns.GridColumn
 		Private colSupplierID As DevExpress.XtraGrid.Columns.GridColumn
@@ -237,6 +230,6 @@ Namespace sampleLinqApp
 		Private colReorderLevel As DevExpress.XtraGrid.Columns.GridColumn
 		Private colDiscontinued As DevExpress.XtraGrid.Columns.GridColumn
 		Private colCategory As DevExpress.XtraGrid.Columns.GridColumn
-		Private WithEvents dragTimer As System.Windows.Forms.Timer
+		Private behaviorManager1 As DevExpress.Utils.Behaviors.BehaviorManager
 	End Class
 End Namespace

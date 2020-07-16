@@ -8,13 +8,11 @@
 ' </auto-generated>
 '------------------------------------------------------------------------------
 
-
-Imports Microsoft.VisualBasic
-Imports System
 Namespace My
 
 
-	<Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute(), Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "9.0.0.0")> _
+	<Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute()>
+	<Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "9.0.0.0")>
 	Friend NotInheritable Partial Class Settings
 		Inherits System.Configuration.ApplicationSettingsBase
 
@@ -26,10 +24,13 @@ Namespace My
 			End Get
 		End Property
 
-		<Global.System.Configuration.ApplicationScopedSettingAttribute(), Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString), Global.System.Configuration.DefaultSettingValueAttribute("Data Source=matthew-266;Initial Catalog=Northwind;Integrated Security=True")> _
+		<Global.System.Configuration.ApplicationScopedSettingAttribute()>
+		<Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>
+		<Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString)>
+		<Global.System.Configuration.DefaultSettingValueAttribute("Data Source=matthew-266;Initial Catalog=Northwind;Integrated Security=True")>
 		Public ReadOnly Property NorthwindConnectionString() As String
 			Get
-				Return (CStr(Me("NorthwindConnectionString")))
+				Return (DirectCast(Me("NorthwindConnectionString"), String))
 			End Get
 		End Property
 	End Class
